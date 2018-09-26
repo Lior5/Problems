@@ -13,19 +13,29 @@ For each of Pierre’s classes, output a single integer k, k cannot be equal to 
 
 # Sample Input
 2
+
 4
+
 2 1 5
+
 2 3 6
+
 3 2 4 6
+
 4 2 4 6 8
+
 3
+
 1 7
+
 1 5
+
 2 3 6
 
 
 # Sample Output
 2
+
 3
 
 
