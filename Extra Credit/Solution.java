@@ -46,8 +46,6 @@ class Main {
 		        System.out.println(-1);
 		        continue loop;
 		    }
-		    System.out.println("THREE "+map.get(3));
-		    System.out.println("TWO "+map.get(2));
 		    for(Integer curr:primes){
 		        if(map.get(curr)==max){
 		            System.out.println(curr);
