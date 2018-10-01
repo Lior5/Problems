@@ -7,16 +7,23 @@ class Main {
 	    Scanner scan = new Scanner(System.in);
 		int t = scan.nextInt();
 		HashSet<Integer> primes = new HashSet<>();
-		for(int i = 2;i<100001;i++){
-		    boolean isPrime = true;
-		    for(int j = 2;j*j<=i;j++){
-		        if(i%j==0){
-		            isPrime =false;
-		            break;
-		        }
-		    }
-		    if(isPrime)primes.add(i);
-		}
+		int max = 100_001;
+		boolean[] isPrime = new boolean[max];
+		
+		Arrays.fill(isPrime, true);
+		
+		for(int i = 2; i < Math.sqrt(max) + 1; i++){
+			if(isPrime[i]){
+				for(int j = i * 2; j < max; j += i){
+					isPrime[j] = false;
+				}
+			}
+        	}
+        	for(int i = 2;i<max;i++){
+           		if(isPrime[i]){
+                		primes.add(i);
+           	 	}
+        	}
 	   	loop:while(t-->0){
 		    int n = scan.nextInt();
 		    HashMap<Integer,Integer> map = new HashMap<Integer, Integer>();
@@ -38,16 +45,16 @@ class Main {
 		        }
 		    }
 		    ArrayList<Integer> biggest = new ArrayList<>();
-		    int max = -1;
+		    int maximum = -1;
 		    for(Integer curr:primes){
-		        max = Math.max(map.get(curr),max);
+		        maximum = Math.max(map.get(curr),maximum);
 		    }
-		    if(max==0){
+		    if(maximum==0){
 		        System.out.println(-1);
 		        continue loop;
 		    }
 		    for(Integer curr:primes){
-		        if(map.get(curr)==max){
+		        if(map.get(curr)==maximum){
 		            System.out.println(curr);
 		            break;
 		        }
