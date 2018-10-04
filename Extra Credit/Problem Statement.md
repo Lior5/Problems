@@ -6,7 +6,7 @@ k<sub>th</sub> question right in order to increase his class average.
 Given the number of questions on the test, the description of n students including an array of length m of integers showing which questions they got right, determine what the value of k for each class should be so that the largest amount of students in that class receive extra credit.
 
 # Input
-The first line of input will contain an integer t representing the number of classes Dr. Pierre has (1<=t<=10). The next t cases will start with an integer n (1<=n<=100), describing how many students are in the t<sub>i</sub> class, followed by n lines containing an integer m representing how many questions they got right (0<=m<=100), an array of length m including integers from 1 to 10^5 stating that the n<sub>i</sub> student got the array<sub>i</sub> question right.
+The first line of input will contain an integer t representing the number of classes Dr. Pierre has (1<=t<=10). The next t cases will start with an integer n (1<=n<=10), describing how many students are in the t<sub>i</sub> class, followed by n lines containing an integer m representing how many questions they got right (0<=m<=10^5), an array of length m including integers from 1 to 10^5 stating that the n<sub>i</sub> student got the array<sub>i</sub> question right.
 
 # Output
 For each of Pierre’s classes, output a single integer k, k cannot be equal to 1, representing the optimal value of k such that the amount of students receiving extra credit is maximized. If there are multiple answers, print the smallest among them. If nobody can receive extra credit print -1.
