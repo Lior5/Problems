@@ -13,7 +13,6 @@ class Main {
             need[i] = scan.next();
         }
         int n = scan.nextInt();
-        int minCost = Integer.MAX_VALUE;
         ArrayList<Store> list = new ArrayList<>();
         for(int i = 0;i<n;i++){
             String name = scan.next();
@@ -29,22 +28,26 @@ class Main {
             int count = 0;
             for(int j = 0;j<l;j++){
                 for(int k = 0;k<10;k++){
-                    if(need[j] == items[k]){
+                    if(need[j].equals(items[k])){
+                        items[k] = "1";
                         count++;
                         cost+=prices[k];
                     }
                 }
             }
+            //System.out.println(count+" "+l);
             if(count!=l){
                 cost = Integer.MAX_VALUE;
             }
-            minCost = Math.min(minCost,cost);
             list.add(new Store(name, cost, -1));
         }
+        // for(int i = 0;i<n;i++){
+        //     System.out.println(list.get(i).name+" "+list.get(i).cost);
+        // }
         int m = scan.nextInt();
         int[] times = new int[n];
         ArrayList[] connections = new ArrayList[n+1];
-        for(int i = 0;i<m;i++){
+        for(int i = 0;i<n+1;i++){
             connections[i] = new ArrayList<Edge>();
         }
         ArrayList<Edge> edges = new ArrayList<>();
@@ -57,19 +60,30 @@ class Main {
         }
         ArrayDeque<Integer> deq = new ArrayDeque<>();
         int[] minimums = new int[n+1];
+        Arrays.fill(minimums,Integer.MAX_VALUE);
         deq.add(1);
         minimums[1] = 0;
         while(!deq.isEmpty()){
             int curr = deq.poll();
             for(int i = 0;i<connections[curr].size();i++){
-                Edge now = connections[curr].get(i);
+                Edge now = (Edge)(connections[curr].get(i));
                 if(minimums[curr]+now.weight<minimums[now.two]){
                     minimums[now.two] = minimums[curr]+now.weight;
                     deq.add(now.two);
                 }
             }
         }
+        int minCost = Integer.MAX_VALUE;
         ArrayList<Integer> contestants = new ArrayList<>();
+        for(int i = 0;i<list.size();i++){
+            if(minimums[i+1]==Integer.MAX_VALUE){
+                Store curr = list.remove(i);
+                list.add(0,new Store(curr.name, Integer.MAX_VALUE, curr.time));
+            }
+        }
+        for(int i = 0;i<list.size();i++){
+            minCost = Math.min(list.get(i).cost,minCost);
+        }
         for(int i = 0;i<list.size();i++){
             Store curr = list.get(i);
             if(curr.cost==minCost){
@@ -78,14 +92,16 @@ class Main {
         }
         int minTime = Integer.MAX_VALUE;
         for(int i = 0;i<contestants.size();i++){
+            //System.out.println(minimums[contestants.get(i)]);
             minTime = Math.min(minTime,minimums[contestants.get(i)]);
         }
         for(int i = 0;i<contestants.size();i++){
             if(minTime == minimums[contestants.get(i)]){
-                System.out.println(list.get(contestants.get(i)).name);
-                return;
+                System.out.print(list.get(contestants.get(i)-1).name+" ");
+                break;
             }
         }
+        System.out.println(minTime);
 	}
 	public static class Edge{
 	    int one, two, weight;
