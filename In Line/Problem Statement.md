@@ -16,25 +16,36 @@ For each case output a single number representing how long in seconds the chosen
 
 # Sample Input
 
-
 5
-7 3
-1 2 7 3 4 5 6
-7 3
-1 2 3 7 4 5 6
-10 6
-1 2 3 4 5 9 6 7 8 10
-5 3
-1 2 4 3 5
-2 1
-1 2
 
+7 3
+
+1 2 7 3 4 5 6
+
+7 3
+
+1 2 3 7 4 5 6
+
+10 6
+
+1 2 3 4 5 9 6 7 8 10
+
+5 3
+
+1 2 4 3 5
+
+2 1
+
+1 2
 
 # Sample output
 
-
 20
+
 2
+
 26
+
 5
+
 0
