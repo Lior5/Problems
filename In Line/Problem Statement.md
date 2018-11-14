@@ -16,6 +16,7 @@ For each case output a single number representing how long in seconds the chosen
 
 # Sample Input
 
+
 5
 7 3
 1 2 7 3 4 5 6
@@ -30,6 +31,7 @@ For each case output a single number representing how long in seconds the chosen
 
 
 # Sample output
+
 
 20
 2
